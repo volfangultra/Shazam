@@ -11,8 +11,8 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument('input_file')       
 parser.add_argument('-dataset', default='data.json')
-parser.add_argument('-tolerance_x', default=25)
-parser.add_argument('-tolerance_y', default=25)
+parser.add_argument('-tolerance_x', default=2)
+parser.add_argument('-tolerance_y', default=5)
 parser.add_argument('-neighborhood_size', default=69)
 parser.add_argument('-embedding_type', default="Neighborhood", choices=["Neighborhood", "Maximum", "Heuristic"])
 parser.add_argument('-maximum_chunk_size', default=10)
@@ -31,6 +31,7 @@ if(not os.path.exists(args.dataset)):
 with open(args.dataset, 'r') as json_file:
     data = json.load(json_file)
     y, sr = librosa.load(args.input_file)
+    y = np.concatenate((np.zeros(112), y))
     print("FILE LOADED")
     y = np.abs(librosa.stft(y))
     y_cords, x_cords = None, None
