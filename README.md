@@ -1,2 +1,2 @@
 # Shazam
-Discount version of Shazam that works a lot better but a lot slower
+This project explores a basic version of the Shazam algorithm for song recognition. We create a "star map" from a song's spectrogram by identifying significant points. The algorithm compares fragments of a song to these maps to find matches. We evaluate three methods for point extraction: local maximum, heuristic approach, and maximum search. By comparing the overlap of extracted points, the algorithm identifies the closest match from a database of songs.
